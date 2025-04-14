@@ -140,6 +140,11 @@ doc_events = {
 	# }
     "Book": {
         "validate" : "library_management.library_management.doctype.book.book.validate_book"
+    },
+    "Library Transaction": {
+        "validate": "library_management.library_management.doctype.library_transaction.library_transaction.validate_transaction",
+        "on_submit": "library_management.library_management.doctype.library_transaction.library_transaction.on_submit_transaction",
+        "on_cancel": "library_management.library_management.doctype.library_transaction.library_transaction.on_cancel_transaction"
     }
 }
 
