@@ -55,5 +55,44 @@ def validate_transaction(doc, method):
 		
 		frappe.db.set_value("Library Transaction", issue_doc.name, "Status", "Returned")
 	
+def on_submit_transaction(doc, method):
+	if doc.transaction_type == "Issue":
+		# reduce stock
+		frappe.db.set_value("Book", doc.book,  "Stock", frappe.db.get_value("Book", doc.book, "Stock") - 1)
+
+	elif doc.transaction_type == "Return":
+		# increase stock
+		frappe.db.set_value("Book", doc.book,  "Stock", frappe.db.get_value("Book", doc.book, "Stock") + 1)
+
+	# updating outstanding debt
+	current_debt = frappe.db.get_value("Member", doc.member, "outstanding_debt")
+	frappe.db.set_value("Member", doc.member, "outstanding_debt", current_debt - doc.rent_fee)
+
+def on_cancel_transaction(doc,method):
+	# revert chnges when transaction is cancelled
+
+	if doc.transaction_type == "Issue":
+		frappe.db.set_value("Book", doc.book, "Stock", frappe.db.get_value("Book", doc.book, "Stock") + 1)
 	
+	elif doc.transaction_type == "Return":
+		frappe.db.set_value("Book", doc.book, "Stock", frappe.db.get_value("Book", doc.book, "Stock") - 1)
+
+	# reverting outstanding debt
+	current_debt = frappe.db.get_value("Member", doc.member, "outstanding_debt")
+	frappe.db.set_value("Member", doc.member, "outstanding_debt", current_debt - doc.rent_fee)
+
+	# update the status of issue transaction back to "issue" status
+	issue_transaction= frappe.get_list(
+		"Library Transaction",
+		filters={
+			"transaction_type" : "Issue",
+			"book": doc.book,
+			"member": doc.member,
+			"status": "Returned"
+		},
+		order_by="issue_date desc",
+		limit=1
+	)
+	if issue_transaction:
+		frappe.db.set_value("Library Transaction", issue_transaction[0].name, "Status", "Issued")
 		
