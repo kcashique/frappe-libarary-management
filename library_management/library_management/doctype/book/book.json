@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:title",
  "creation": "2025-04-14 13:08:19.889159",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -22,7 +23,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Title",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "author",
@@ -78,10 +80,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-14 14:43:00.748758",
+ "modified": "2025-04-14 14:55:52.769196",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Book",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
