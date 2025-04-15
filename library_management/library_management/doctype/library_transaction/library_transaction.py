@@ -14,11 +14,11 @@ def validate_transaction(doc, method):
 	if doc.transaction_type == "Issue":
 		# checking members outstanding dues.
 		member =frappe.get_doc("Member", doc.member)
-		if member.out_standing_debt >= 500:
+		if member.outstanding_debt >= 500:
 			frappe.throw(f"Cannot issue books to {member.full_name} due to outstanding debt of {member.outstanding_debt}.")
 		
 		# cheking books avialability
-		book = frappe.get_doc("Books", doc.book)
+		book = frappe.get_doc("Book", doc.book)
 		if book.stock <=0:
 			frappe.throw(f"Book {book.title} is out of stock")
 		
