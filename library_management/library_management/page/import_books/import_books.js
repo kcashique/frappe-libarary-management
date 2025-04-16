@@ -1,5 +1,3 @@
-const { error } = require("console");
-
 frappe.pages['import-books'].on_page_load = function (wrapper) {
 	var page = frappe.ui.make_app_page({
 		parent: wrapper,
@@ -9,6 +7,8 @@ frappe.pages['import-books'].on_page_load = function (wrapper) {
 
 	// load html content
 	$(frappe.render_template("import_books", {})).appendTo(page.body);
+
+	page.book_importer = new BookImporter(page)
 }
 
 class BookImporter {
@@ -78,9 +78,9 @@ class BookImporter {
 						});
 
 						html += '</tbody></table></div>';
-						$("#book-list").html(html);
+						$("#books_list").html(html);
 					} else {
-						$("#book-list").html('<div class="alert alert-warning "> No new books where imported.</div>');
+						$("#books_list").html('<div class="alert alert-warning "> No new books where imported.</div>');
 					}
 				}
 			},
