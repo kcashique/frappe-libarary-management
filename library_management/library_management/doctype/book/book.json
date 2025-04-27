@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2025-04-14 13:08:19.889159",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "author",
+  "isbn",
+  "publisher",
+  "publication_date",
+  "num_pages",
+  "language_code",
+  "stock",
+  "avarage_rating",
+  "book_image"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Data",
+   "label": "Author",
+   "reqd": 1
+  },
+  {
+   "fieldname": "isbn",
+   "fieldtype": "Data",
+   "label": "ISBN",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "publisher",
+   "fieldtype": "Data",
+   "label": "Publisher"
+  },
+  {
+   "fieldname": "publication_date",
+   "fieldtype": "Data",
+   "label": "Publication Date"
+  },
+  {
+   "fieldname": "num_pages",
+   "fieldtype": "Int",
+   "label": "Number Of Pages"
+  },
+  {
+   "fieldname": "language_code",
+   "fieldtype": "Data",
+   "label": "Language Code"
+  },
+  {
+   "default": "1",
+   "fieldname": "stock",
+   "fieldtype": "Int",
+   "label": "Available Stock",
+   "reqd": 1
+  },
+  {
+   "fieldname": "avarage_rating",
+   "fieldtype": "Float",
+   "label": "Avarage Rating"
+  },
+  {
+   "fieldname": "book_image",
+   "fieldtype": "Attach Image",
+   "label": "Book Cover Image"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-14 14:55:52.769196",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Book",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

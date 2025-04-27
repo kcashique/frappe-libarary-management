@@ -1,0 +1,25 @@
+{
+ "content": null,
+ "creation": "2025-04-15 12:30:51.086426",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-04-15 12:30:51.086426",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "import-books",
+ "owner": "Administrator",
+ "page_name": "import-books",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Library Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0
+}
